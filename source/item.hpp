@@ -1,6 +1,8 @@
 #ifndef RK_ITEM_HPP
 #define RK_ITEM_HPP
 
+#include<string>
+
 // a class that describe an the item, that can be purchased from the store
 class cItem {
     private:
