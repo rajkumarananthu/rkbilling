@@ -10,5 +10,17 @@ class cItem {
         std::string mName;
 	// to store the cost of an item
         double mCost;
+    public:
+	//
+	cItem();
+	//
+	void setName (std::string name);
+	//
+	void setCost (double cost);
+	//
+	std::string getName();
+	//
+	double getCost();
 };
+
 #endif // RK_ITEM_HPP
