@@ -28,6 +28,7 @@ class cItem {
     // can't be -ve
 	unsigned int mDiscount;
 
+    // type of the item veg/non-veg
     eItemType mItemType;
 
     public:
@@ -47,6 +48,7 @@ class cItem {
     void setDiscount (unsigned int discount) {
         mDiscount = discount;
     }
+
 	//
 	std::string getName() const {
         return mName;

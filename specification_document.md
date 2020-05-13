@@ -25,7 +25,7 @@ We will have a DB (I am using mysql DB in my case) for each store (we can centra
 ##### --> Architecture:
 
 
-GUI ---->   Common Code    <---->   DB
-
+GUI ----------------->   Common Code    <---->   DB
+gui_code ------------->  billing_if     <------> db_if
 
 Common Code will handle the data insertion and data extraction from DB and handle the processed data to GUI.
