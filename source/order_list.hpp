@@ -7,14 +7,28 @@
 // forward declarations
 class cItem;
 
-// 
+// class for the Order list, this will have items that are ordered by
+// customers, on the completion of order we will use this to
+// print/calculate the total order value
 class cOrderList {
     private:
         std::vector<cItem> mOrderList;
     public:
-        //
-	void addToList(cItem& item);
 	//
-	std::vector<cItem> getList();
+	cOrderList() = default;
+	//
+	~cOrderList() = default;
+        // 
+	void add(cItem& item);
+	//
+	std::vector<cItem> get();
+	// 
+	int netBill();
+	//
+	double netTax();
+	//
+	double grossBill();
+	//
+	bool confirmOrder();
 };
 #endif // RK_ORDER_LIST_HPP
