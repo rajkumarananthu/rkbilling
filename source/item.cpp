@@ -1,27 +1,13 @@
 #include<item.hpp>
+#include "item.hpp"
 
-//
-cItem::cItem() {
-    mName = "";
-    mCost = 0;
-}
+// calculate the total bill value of the item
+// and return it to the calling function
+unsigned float cItem::getBillValue () const {
+    unsigned float billValue;
+    
+    billValue = mCost - ( float(mCost * mDiscount) / 100 );
+    billValue = billValue - ( float(billValue * mTax) / 100 );
 
-//
-void cItem::setName (std::string name) {
-    mName = name; 
-}
-
-//
-void cItem::setCost (double cost) {
-    mCost = cost;
-}
-
-//
-std::string cItem::getCost () {
-    return mName;
-}
-
-//
-double cItem::getName() {
-    return mCost;
+    return billValue;
 }
