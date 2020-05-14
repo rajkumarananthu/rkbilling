@@ -50,27 +50,33 @@ class cItem {
     }
 
 	//
-	std::string getName() const {
+	std::string name() const {
         return mName;
     }
 
 	//
-	unsigned float getCost() const {
+	unsigned float cost() const {
         return mCost;
     }
 
 	//
-	unsigned float getTax() const {
+	unsigned float tax() const {
         return mTax;
     }
 
     //
-    unsigned int getDiscount() const {
+    unsigned int discount() const {
         return mDiscount;
     }
 
     //
-    unsigned float getBillValue() const ;
+    unsigned float billValue() const ;
+
+    //
+    unsigned float taxValue() const;
+
+    //
+    unsigned float discountValue() const;
 };
 
 #endif // RK_ITEM_HPP

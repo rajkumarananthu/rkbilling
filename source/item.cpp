@@ -3,11 +3,23 @@
 
 // calculate the total bill value of the item
 // and return it to the calling function
-unsigned float cItem::getBillValue () const {
+unsigned float cItem::billValue () const {
     unsigned float billValue;
     
-    billValue = mCost - ( float(mCost * mDiscount) / 100 );
-    billValue = billValue - ( float(billValue * mTax) / 100 );
+    billValue = mCost - getDiscountValue();
+    billValue = billValue + getTaxValue();
 
     return billValue;
+}
+
+//
+unsigned float cItem::taxValue () const {
+
+    return ( float(mCost * mTax) / 100 );
+}
+
+//
+unsigned float cItem::discountValue() const {
+
+    return ( float(mCost * mDiscount) / 100 );
 }

@@ -12,7 +12,7 @@ class cItem;
 // print/calculate the total order value
 class cOrderList {
     private:
-        std::vector<cItem> mOrderList;
+        std::vector< std::shared_ptr<cItem> > mOrderList;
     public:
 	//
 	cOrderList() = default;
