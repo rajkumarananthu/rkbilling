@@ -45,7 +45,17 @@ Order Table attributes:
 - Net Bill Value (float/double)
 - tax Value (float/double)
 - discount value (float/double)
+- Cashier (Foreign key to Users table)
 
 OrderItems Table attributes:
 - Item (foriegn key to items table)
 - order id (foreign key to orders table)
+- count (integer)
+
+Users Table attributes:
+- Userid (unique id of the user, PRIMARY KEY)
+- Name (Full Name of the user)
+- Password (encrypted using any encrypted algorithm so that we can provide security)
+- Gender (Male/Female/Others)
+- Age (integer)
+- Marital Staus (married/un-married/divorced)
