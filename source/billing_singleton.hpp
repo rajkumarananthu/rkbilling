@@ -1,5 +1,5 @@
-#ifndef RK_BILLING_IF_SINGLETON_HPP
-#define RK_BILLING_IF_SINGLETON_HPP
+#ifndef RK_BILLING_SINGLETON_HPP
+#define RK_BILLING_SINGLETON_HPP
 
 #include "common.hpp"
 
@@ -11,11 +11,16 @@ class cBillingSingleton {
     // actual orde list for each order
     // only one instance of the mOrderList
     // we clear the ordeList once the order is confirmed
-    std::shared_ptr< cOrderList > mOrderList;
+    ItemList mOrderList;
 
     // we will get this list each time
     // we create the cBillingSingleton object and when refresh is asked
+    // this is to reduce to the cost of query to the DB each time
+    // so we refresh this list, using the GUI option (planned)
     ItemList mItemList;
+
+    //
+    std::shared_ptr<cDBSingleton> mDB;
 
     //
     std::shared_ptr<cBillingSingleton> mBillingPtr;
@@ -23,6 +28,7 @@ class cBillingSingleton {
     // as it is a singleton class the constuctor is private
     cBillingSingleton() {
         mOrderList = new cOrderList();
+        mDB = cDBSingleton::getDBSingleton();
     }
 
     public:
@@ -39,13 +45,8 @@ class cBillingSingleton {
         return mBillingPtr;
     }
 
-    // use db_if to connect to DB and get the names
-    // we will save the list of names in the member variable to reduce the number of time DB is
-    // accessed
-    std::vector<std::string> getItemNames();
-
     //
     void refreshItemList ();
 };
 
-#endif // RK_BILLING_IF_SINGLETON_HPP
+#endif // RK_BILLING_SINGLETON_HPP
