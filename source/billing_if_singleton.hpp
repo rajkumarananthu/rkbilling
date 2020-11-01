@@ -1,6 +1,8 @@
 #ifndef RK_BILLING_IF_SINGLETON_HPP
 #define RK_BILLING_IF_SINGLETON_HPP
 
+#include "common.hpp"
+
 // a class which is used by graphical interface
 // created as singleton because, one billing interface is enough
 // for any billing
@@ -13,7 +15,7 @@ class cBillingIfSingleton {
 
     // we will get this list each time
     // we create the cBillingIfSingleton object and when refresh is asked
-    std::map< std::string, std::shared_ptr<cItem> > mItemList;
+    ItemList mItemList;
 
     //
     std::shared_ptr<cBillingIfSingleton> mBillingIfPtr;

@@ -1,7 +1,7 @@
 #ifndef RK_ORDER_LIST_HPP
 #define RK_ORDER_LIST_HPP
 
-#include<vector>
+#include "common.hpp"
 
 
 // forward declarations
@@ -12,22 +12,22 @@ class cItem;
 // print/calculate the total order value
 class cOrderList {
     private:
-        std::vector< std::shared_ptr<cItem> > mOrderList;
+        ItemList mOrderList;
+
     public:
+    
 	//
 	cOrderList() = default;
+
 	//
 	~cOrderList() = default;
-        // 
-	void add(cItem& item);
+
+    // 
+	void add(std::shared_ptr<cItem> item);
+
 	//
-	std::vector<cItem> get();
-	// 
-	int netBill();
-	//
-	double netTax();
-	//
-	double grossBill();
+	ItemList get();
+
 	//
 	bool confirmOrder();
 };
