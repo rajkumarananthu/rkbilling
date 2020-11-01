@@ -6,7 +6,7 @@
 // a class which is used by graphical interface
 // created as singleton because, one billing interface is enough
 // for any billing
-class cBillingIfSingleton {
+class cBillingSingleton {
     private:
     // actual orde list for each order
     // only one instance of the mOrderList
@@ -14,29 +14,29 @@ class cBillingIfSingleton {
     std::shared_ptr< cOrderList > mOrderList;
 
     // we will get this list each time
-    // we create the cBillingIfSingleton object and when refresh is asked
+    // we create the cBillingSingleton object and when refresh is asked
     ItemList mItemList;
 
     //
-    std::shared_ptr<cBillingIfSingleton> mBillingIfPtr;
+    std::shared_ptr<cBillingSingleton> mBillingPtr;
 
     // as it is a singleton class the constuctor is private
-    cBillingIfSingleton() {
+    cBillingSingleton() {
         mOrderList = new cOrderList();
     }
 
     public:
     // 
-    ~cBillingIfSingleton() {
+    ~cBillingSingleton() {
         delete mOrderList;
     }
 
     //
-    static std::shared_ptr<cBillingIfSingleton> getBillingIf () {
-        if (mBillingIfPtr == nullptr) {
-            mBillingIfPtr = new cBillingIfSingleton();
+    static std::shared_ptr<cBillingSingleton> getBillingPtr () {
+        if (mBillingPtr == nullptr) {
+            mBillingPtr = new cBillingSingleton();
         }
-        return mBillingIfPtr;
+        return mBillingPtr;
     }
 
     // use db_if to connect to DB and get the names
