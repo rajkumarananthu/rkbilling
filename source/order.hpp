@@ -24,10 +24,17 @@ class cOrder {
 
     // User-id
     // need to have an id
+    std::shared_ptr<cDBSingleton> mDB;
 
     public:
 
-    cOrder() = default;
+    cOrder() {
+        mDB = cDBSingleton::getDB();
+        mBillValue = 0;
+        mTax = 5;
+        mDiscount = 0;
+        mGrossBill = 0;
+    }
 
     bool addItem(std::string itemName);
 
