@@ -18,13 +18,8 @@ class cItem {
     // can't be -ve
     unsigned int mCost;
 
-	// to store tax on item, expressed as percentage
-    // can't be -ve
-	unsigned float mTax;
-
-	// to store discount on item, expressed as percentage
-    // can't be -ve
-	unsigned int mDiscount;
+    // this is the discount specific to an item
+    unsigned int mDiscount;
 
     // type of the item veg/non-veg
     eItemType mItemType;
@@ -34,9 +29,10 @@ class cItem {
 	cItem() = default; // will not use this
 
     // parameter constructor
-    cItem (std::string name, unsigned int cost, eItemType itemType) {
+    cItem (std::string name, unsigned int cost, eItemType itemType, unsigned int discount = 0) {
         mName = name;
         mCost = cost;
+        mDiscount = discount;
         mItemType = itemType;
     }
 
@@ -48,6 +44,16 @@ class cItem {
 	//
 	unsigned float cost() const {
         return mCost;
+    }
+
+    //
+    std::string itemType() const {
+        return (mItemType == NON_VEG) ? "Non-Vegetarian" : "Vegetarian";
+    }
+
+    //
+    unsigend int discount() const {
+        return mDiscount;
     }
 
 };

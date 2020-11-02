@@ -35,12 +35,13 @@ Items Table attributes
 - ItemId(primary key, unique for each item)
 - Item Name (string)
 - Item Cost (float/double)
-- Item Tax (float/double)
+- Item Discount (float/double)
 - Item type (Veg/Non-veg)
 
 Order Table attributes:
 - OrderId (primary key, unique for each order)
-- Customer Name/Mobile
+- Order Type (Online/ Dine-in)
+- Customer Id(Foreign key to customers)
 - Gross Bill Value (float)
 - Net Bill Value (float/double)
 - tax Value (float/double)
@@ -59,3 +60,9 @@ Users Table attributes:
 - Gender (Male/Female/Others)
 - Age (integer)
 - Marital Staus (married/un-married/divorced)
+
+Customer Table attributes:
+- Customer Id
+- Customer Name
+- Customer Mobile Number
+- DOB of Customer
