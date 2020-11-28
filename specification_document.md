@@ -31,38 +31,38 @@ gui_code ------------->  billing_if     <------> db_if
 Common Code will handle the data insertion and data extraction from DB and handle the processed data to GUI.
 
 
-Items Table attributes
-- ItemId(primary key, unique for each item)
-- Item Name (string)
-- Item Cost (float/double)
-- Item Discount (float/double)
-- Item type (Veg/Non-veg)
+Items Table attributes: (Based in the usage)
+- ItemId(primary key, unique for each item) - UNSIGNED INT
+- Item Name (string) - VARCHAR(100)
+- Item Cost (float/double) - UNSIGNED INT
+- Item type (Veg/Non-veg) - VARCHAR(1)
 
 Order Table attributes:
-- OrderId (primary key, unique for each order)
-- Order Type (Online/ Dine-in)
-- Customer Id(Foreign key to customers)
-- Gross Bill Value (float)
-- Net Bill Value (float/double)
-- tax Value (float/double)
-- discount value (float/double)
-- Cashier (Foreign key to Users table)
+- OrderId (primary key, unique for each order) - INT NOT NULL AUTO_INCREMENT PRIMARY KEY
+- Order Type (Online/ Dine-in) - VARCHAR(20) 
+- Customer Id(Foreign key to customers) - INT NOT NULL FORIEGN KEY to customers table
+- Gross Bill Value (float)(Sum of costs) - DOUBLE NOT NULL
+- Net Bill Value (float/double)(Gross bill - discounts) - DOUBLE NOT NULL
+- tax Value (float/double)(tax percentage) - INT
+- discount value (float/double)(discount percentage) - INT 
+- Cashier (Foreign key to Users table) - INT NOT NULL FORIEGN KEY
 
 OrderItems Table attributes:
-- Item (foriegn key to items table)
-- order id (foreign key to orders table)
-- count (integer)
+- Item Id (foriegn key to items table) - INT NOT NULL FORIEGN KEY
+- order id (foreign key to orders table) - INT NOT NULL FORIEGN KEY
+- count (integer)(if value is NULL, consider it as 1) - INT
 
-Users Table attributes:
-- Userid (unique id of the user, PRIMARY KEY)
-- Name (Full Name of the user)
-- Password (encrypted using any encrypted algorithm so that we can provide security)
-- Gender (Male/Female/Others)
-- Age (integer)
-- Marital Staus (married/un-married/divorced)
+Employees Table attributes:
+- Userid (unique id of the user, PRIMARY KEY) - INT NOT NULL AUTO_INCREMENT PRIMARY KEY
+- Name (Full Name of the user)(Full Name) - VARCHAR(100) NOT NULL
+- Password (encrypted using any encrypted algorithm so that we can provide security) - Will use some standard hash generation algorithms, VARCHAR(256) NOT NULL
+- Gender (Male/Female/Others) - VARCHAR(1) NOT NULL
+- Age (integer) - INT
+- Marital Staus (married/un-married/divorced) - VARCHAR(1) 
+- DOB of User - DATE
 
 Customer Table attributes:
-- Customer Id
-- Customer Name
-- Customer Mobile Number
-- DOB of Customer
+- Customer Id - INT NOT NULL AUTO_INCREMENT PRIMARY KEY
+- Customer Name - VARCHAR(100) 
+- Customer Mobile Number - INT NOT NULL
+- DOB of Customer - DATE 
