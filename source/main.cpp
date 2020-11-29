@@ -1,11 +1,12 @@
-#include "db_if_singleton.hpp"
 #include "common.hpp"
+#include "gui/top_window.hpp"
 
 
-int main (void) {
+int main (int argc, char *argv[]) {
 
-    std::shared_ptr<cDBSingleton> db = cDBSingleton::getInstance();
+    auto app = Gtk::Application::create(argc, argv, "org.rkbilling.top");
 
-    db->refreshItemList();
-    db->printItemList();
+    cTopWindow topWindow;
+
+    return app->run(topWindow);
 }
