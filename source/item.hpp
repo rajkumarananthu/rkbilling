@@ -11,6 +11,8 @@
 // - cost of item
 class cItem {
     private:
+    unsigned int mId;
+
     // to store the name of an item
     std::string mName;
 
@@ -29,11 +31,17 @@ class cItem {
 	cItem() = default; // will not use this
 
     // parameter constructor
-    cItem (std::string name, unsigned int cost, eItemType itemType, unsigned int discount = 0) {
+    cItem (unsigned int id, std::string name,
+           unsigned int cost, char itemType, unsigned int discount = 0) {
+        mId = id;
         mName = name;
         mCost = cost;
         mDiscount = discount;
-        mItemType = itemType;
+        if (itemType == 'N') {
+            mItemType = NON_VEG;
+        } else {
+            mItemType = VEG;
+        }
     }
 
 	//

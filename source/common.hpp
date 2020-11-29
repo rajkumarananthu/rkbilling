@@ -13,4 +13,9 @@ typedef enum item_type {
 
 using ItemList = std::vector< std::shared_ptr<cItem> >;
 
+#define DBHOST localhost
+#define DBUSER root
+#define DBPASSWORD 1234
+#define DBSCHEMA RKBILLINGDB
+
 #endif // RK_COMMON_INCLUDES

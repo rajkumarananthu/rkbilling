@@ -2,6 +2,7 @@
 #define RK_DB_SINGLETON_HPP
 
 #include "mysql_connection.h"
+#include "common.hpp"
 
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
@@ -22,7 +23,7 @@ class cDBSingleton {
 
         ItemList mItemList; 
 
-        cDBSingleton() {
+        cDBSingleton (void) {
             mDriver = nullptr;
             mCon = nullptr;
             mStmt = nullptr;
@@ -31,18 +32,26 @@ class cDBSingleton {
 
     public:
 
-        ~cDBSingleton() {
+        ~cDBSingleton () {
             delete mDB;
+            if (mCon) delete mCon;
+            if (mStmt) delete mStmt;
+            if (mResSet) delete mResSet;
+            mItemList.clear();
         }
 
-        static std::shared_ptr<cDBSingleton> getInstance() {
+        static std::shared_ptr<cDBSingleton> getInstance (void) {
             if (mDB == nullptr) {
-                mDB = new cDBSingleton();
+                mDB = std::make_shared<cDBSingleton>();
             }
             return mDB;
         }
 
+        void refreshItemList (void) const;
 
+        void printItemList (void) const;
+
+        void addItem (std::string itemName, unsigned int itemCost, char itemType);
 };
 
 #endif // RK_DB_SINGLETON_HPP
