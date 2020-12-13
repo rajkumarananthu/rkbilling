@@ -2,14 +2,22 @@
 #include <iostream>
 
 cTopWindow::cTopWindow()
-            : mLoginButton("Login") {
+              : mOrderButton("New Order"),
+                mStatsButton("Statistics"){
     set_border_width(10);
+    set_default_size(600,600);
 
-    mLoginButton.signal_clicked().connect(sigc::mem_fun(*this, &cTopWindow::on_button_clicked));
+    mOrderButton.signal_clicked().connect(sigc::mem_fun(*this, &cTopWindow::on_button_clicked));
+    mStatsButton.signal_clicked().connect(sigc::mem_fun(*this, &cTopWindow::on_button_clicked));
 
-    add(mLoginButton);
+    mOrderButton.show();
+    mStatsButton.show();
 
-    mLoginButton.show();
+    mGrid.add(mOrderButton);
+    mGrid.attach_next_to(mStatsButton, mOrderButton, Gtk::POS_BOTTOM);
+
+    add(mGrid);
+    show_all_children();
 }
 
 cTopWindow::~cTopWindow() {

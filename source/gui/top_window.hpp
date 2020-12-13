@@ -7,7 +7,11 @@ class cTopWindow : public Gtk::Window {
     protected:
         void on_button_clicked();
 
-        Gtk::Button mLoginButton;
+        // two text boxes, one - user id, two -password
+        // Gtk::Button mLoginButton;
+        Gtk::Button mOrderButton;
+        Gtk::Button mStatsButton;
+        Gtk::Grid mGrid;
 
     public:
         cTopWindow();
